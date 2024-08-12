@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import *
-
+#Ura
 app = QApplication([])
 
 window = QWidget()
