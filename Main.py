@@ -2,7 +2,18 @@ from PyQt5.QtWidgets import *
 #Ura
 app = QApplication([])
 
+from file_helper import *
+
+notes = read_from_file()
+
 window = QWidget()
+
+notes_list = QListWidget()
+notes_list.addItems(notes)
+notes_list_label = QLabel('Список заміток')
+
+notes_tags = QListWidget()
+notes_tags_label = QLabel('Список тегів')
 
 main_line = QHBoxLayout()
 v2 = QHBoxLayout()
@@ -47,6 +58,18 @@ v3.addWidget(create_note1_btn)
 v3.addWidget(delet_note1_btn)
 v1.addWidget(save_note_btn1)
 
+def show_note():
+    key = notes_list.selectedItems()[0].text()
+    wikno2.SetText(notes[key]['текст'])
+    notes_tags.clear()
+    notes_tags.addItems(notes[key]['теги'])
+
+#def save_note()
+    #key = notes_list.selectedItems()[0].text()
+    #notes[key]["текст"] = wikno2.toPlaintext()
+    #write_in_file(notes)
+
+notes_list.itemClicked.connect(show_note)
 
 window.setLayout(main_line)
 window.show()
