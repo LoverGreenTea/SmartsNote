@@ -9,23 +9,23 @@ v2 = QHBoxLayout()
 v3 = QHBoxLayout()
 
 test = QLabel("Hello World")
-wikno = QTextEdit("")
+wikno = QTextEdit("Ласкаво Просимо!")
 
 
 list_notes_lbl = QLabel("Список Змінок")
 text = QLabel("1")
 notes_list = QListWidget()
-create_note_btn = QPushButton("створити")
-delet_note_btn = QPushButton("видалити")
-save_note_btn = QPushButton("зберегти")
+create_note_btn = QPushButton("створити замітку")
+delet_note_btn = QPushButton("видалити зімітку")
+save_note_btn = QPushButton("зберегти замітку")
 
 #:D Hello
 text1 = QLabel("2")
 wikno2 = QTextEdit("")
 edittext = QLineEdit("")
-create_note1_btn = QPushButton("створити")
-delet_note1_btn = QPushButton("видалити")
-save_note_btn1 = QPushButton("зберегти")
+create_note1_btn = QPushButton("Додати до звитки")
+delet_note1_btn = QPushButton("відкріпити від звитки")
+save_note_btn1 = QPushButton("Шукати зачутки по тегу")
 
 
 
