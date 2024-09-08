@@ -1,11 +1,9 @@
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import *
-#Ura
 app = QApplication([])
-
 from file_helper import *
 
 notes = read_from_file()
-
 window = QWidget()
 
 notes_list = QListWidget()
@@ -58,19 +56,36 @@ v3.addWidget(create_note1_btn)
 v3.addWidget(delet_note1_btn)
 v1.addWidget(save_note_btn1)
 
+def delete_note():
+    key = list_notes_lbl.selectedItems()[0].text()
+    notes.pop(key)
+    list_notes_lbl.clear()
+    list_notes_lbl.addItems(notes)
+    arita_in_file(notes)
+
+def new_note():
+    note_name, ok = QInputDialog.getText(window, create_note_btn, notes_list)
+    if ok == True:
+        notes[note_name] = {
+            "текст": "",
+            "тегт":[]
+        }
+
 def show_note():
     key = notes_list.selectedItems()[0].text()
     wikno2.SetText(notes[key]['текст'])
     notes_tags.clear()
     notes_tags.addItems(notes[key]['теги'])
 
-#def save_note()
-    #key = notes_list.selectedItems()[0].text()
-    #notes[key]["текст"] = wikno.toPlaintext()
-    #write_in_file(notes)
+def save_note():
+    key = notes_list.selectedItems()[0].text()
+    notes[key]["текст"] = wikno2.toPlaintext()
+    write_in_file(notes)
 
+create_note_btn.clicked.connect(new_note)
 notes_list.itemClicked.connect(show_note)
+save_note_btn.clicked.connect(save_note)
 
 window.setLayout(main_line)
 window.show()
-app.exec()
+app.exec_()
