@@ -66,7 +66,7 @@ def show_note():
 
 #def save_note()
     #key = notes_list.selectedItems()[0].text()
-    #notes[key]["текст"] = wikno2.toPlaintext()
+    #notes[key]["текст"] = wikno.toPlaintext()
     #write_in_file(notes)
 
 notes_list.itemClicked.connect(show_note)
